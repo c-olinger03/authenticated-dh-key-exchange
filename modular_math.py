@@ -2,13 +2,20 @@ def modular_exponentiation(base, exponent, modulus):
 
     try:
 
-        # Add messages for specific TypeError points
-        if type(base) != int or type(exponent) != int or type(modulus) != int:
-            raise TypeError
+        if type(base) != int:
+            raise TypeError("Base must be an integer.")
 
-        # Add messages for specific ValueError points
-        elif exponent < 0 or modulus <= 0:
-            raise ValueError
+        elif type(exponent) != int:
+            raise TypeError("Exponent must be an integer.")
+
+        elif type(modulus) != int:
+            raise TypeError("Modulus must be an integer.")
+
+        elif exponent < 0:
+            raise ValueError("Exponent must be non-negative.")
+
+        elif modulus <= 0:
+            raise ValueError("Modulus must be positive.")
 
         else:
             result = 1 % modulus
@@ -22,7 +29,6 @@ def modular_exponentiation(base, exponent, modulus):
 
             return result
 
-
-    # Add exception conditions
-    except (TypeError, ValueError):
-        pass
+    except (TypeError, ValueError) as e:
+        print(e)
+        return False

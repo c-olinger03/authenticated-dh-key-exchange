@@ -1,4 +1,3 @@
-import cryptography
 from Crypto.Util.number import getPrime, isPrime
 import secrets
 import time
@@ -22,13 +21,11 @@ def timer_and_value(func):
 def generate_prime(bits):
     try:
 
-        # Add messages for TypeError
         if type(bits) != int:
-            raise TypeError
+            raise TypeError("Bits must be an integer.")
 
-        # Add messages for ValueError
         elif bits < 16 or bits > 32:
-            raise ValueError
+            raise ValueError("Bits must be between 16 and 32 inclusive.")
 
         else:
             p_found = False
@@ -36,11 +33,30 @@ def generate_prime(bits):
             while not p_found:
                 p = getPrime(bits, secrets.token_bytes)
 
-                if isPrime(p) and p.bit_length() == bits:
+                if p % 2 != 0 and p.bit_length() == bits:
                     p_found = True
 
             return p
 
-    # Add exception conditions
-    except (TypeError, ValueError):
-        pass
+    except (TypeError, ValueError) as e:
+        print(e)
+        return False
+
+def received_modulus_validation(modulus):
+    try:
+        if type(modulus) != int:
+            raise TypeError("Modulus must be an integer.")
+
+        elif modulus.bit_length() < 16 or modulus.bit_length() > 32:
+            raise ValueError(f"Modulus must be between 16-bits and 32-bits inclusive in length.")
+
+        else:
+            if isPrime(modulus):
+                return True
+
+            else:
+                raise ValueError("Modulus is not a prime number.")
+
+    except (TypeError, ValueError) as e:
+        print(e)
+        return False
