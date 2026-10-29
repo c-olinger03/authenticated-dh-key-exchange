@@ -2,6 +2,8 @@ from Crypto.Util.number import getPrime, isPrime
 import secrets
 import time
 
+from modular_math import modular_exponentiation
+
 
 def timer_and_value(func):
     def inner(*args, **kwargs):
@@ -60,3 +62,66 @@ def received_modulus_validation(modulus):
     except (TypeError, ValueError) as e:
         print(e)
         return False
+
+def prime_factors(n):
+    try:
+        if type(n) != int:
+            raise TypeError("n must be an integer.")
+
+        elif n < 1:
+            raise ValueError("n must be a positive integer.")
+
+        elif n == 1:
+            return set()
+
+        else:
+
+            distinct_factors = set()
+
+            if n % 2 == 0:
+                distinct_factors.add(2)
+                while n % 2 == 0:
+                    n //= 2
+
+            odd_divisor = 3
+
+            while odd_divisor * odd_divisor < n:
+
+                if n % odd_divisor == 0:
+                    distinct_factors.add(odd_divisor)
+                    while n % odd_divisor == 0:
+                        n //= odd_divisor
+
+                odd_divisor += 2
+
+            if n > 1:
+                distinct_factors.add(n)
+
+            return distinct_factors
+
+
+    except (TypeError, ValueError) as e:
+        print(e)
+        return False
+
+def generator_selection(p, factors):
+
+    g = 2
+
+    generator_found = False
+
+    while not generator_found:
+
+        generator_found = True
+
+        for r in factors:
+            test_candidate = modular_exponentiation(g, (p-1) // r, p)
+            if test_candidate == 1:
+                generator_found = False
+
+        if not generator_found:
+            g += 1
+            if g == p-1:
+                return False
+
+    return g
