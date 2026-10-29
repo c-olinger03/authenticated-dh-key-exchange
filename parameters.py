@@ -1,7 +1,6 @@
 from Crypto.Util.number import getPrime, isPrime
 import secrets
 import time
-
 from modular_math import modular_exponentiation
 
 
@@ -19,7 +18,6 @@ def timer_and_value(func):
 
     return inner
 
-@timer_and_value
 def generate_prime(bits):
     try:
 
