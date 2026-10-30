@@ -10,15 +10,24 @@ def create_signing_identities():
     bob_private_auth_key = Ed25519PrivateKey.generate()
     bob_public_auth_key = bob_private_auth_key.public_key()
 
-    # alice_trusted_auth_keys = {"Bob":bob_public_auth_key}
-    #
-    # bob_trusted_auth_keys = {"Alice":alice_public_auth_key}
-
     alice_package = {"alice_private_auth_key" : alice_private_auth_key, "alice_public_auth_key" : alice_public_auth_key,
-                     "Bob" : bob_public_auth_key}
+                     "trusted_key" : bob_public_auth_key}
 
     bob_package = {"bob_private_auth_key" : bob_private_auth_key, "bob_public_auth_key" : bob_public_auth_key,
-    "Alice" : alice_public_auth_key}
+                    "trusted_key" : alice_public_auth_key}
 
     return alice_package, bob_package
+
+def sign_message(message, private_auth_key):
+    signature = private_auth_key.sign(message)
+    message_package = (message, signature)
+    return message_package
+
+def verify_signature(trusted_key, message_package):
+    try:
+        trusted_key.verify(message_package[1],message_package[0])
+    except InvalidSignature as e:
+        print("Invalid Verification Signature. Aborting Exchange")
+        return None
+
 
