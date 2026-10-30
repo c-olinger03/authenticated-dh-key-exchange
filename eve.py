@@ -101,6 +101,9 @@ def unauth_eve_demo():
         # Eve verifies message from Alice
         verify_received_message_package(alice_init_message_received_eve, eve_local_package_for_alice)
 
+        # Eve verifies received modulus
+        received_modulus_validation(alice_init_message_received_eve["p"])
+
         # Eve stores init values in local storage
         add_received_values(alice_init_message_received_eve, eve_local_package_for_alice)
 
@@ -169,6 +172,9 @@ def unauth_eve_demo():
 
         # Bob verifies message from Alice (Eve)
         verify_received_message_package(alice_init_message_received, bob_local_package)
+
+        # Bob verifies p
+        received_modulus_validation(alice_init_message_received["p"])
 
         # Bob stores init values in local storage
         add_received_values(alice_init_message_received, bob_local_package)
@@ -457,6 +463,9 @@ def auth_eve_demo():
         # Eve verifies message from Alice
         verify_received_message_package(alice_init_message_received_eve, eve_local_package_for_alice)
 
+        # Eve verifies p
+        received_modulus_validation(alice_init_message_received_eve["p"])
+
         # Eve stores init values in local storage
         add_received_values(alice_init_message_received_eve, eve_local_package_for_alice)
 
@@ -533,6 +542,9 @@ def auth_eve_demo():
 
         # Bob verifies message from Alice
         verify_received_message_package(alice_init_message_received, bob_local_package)
+
+        # Bob verifies p
+        received_modulus_validation(alice_init_message_received["p"])
 
         # Bob stores init values in local storage
         add_received_values(alice_init_message_received, bob_local_package)
@@ -655,6 +667,9 @@ def modified_public_dh_eve_demo():
         # Eve verifies message from Alice
         verify_received_message_package(alice_init_message_received_eve, eve_local_package)
 
+        # Eve verifies p
+        received_modulus_validation(alice_init_message_received_eve["p"])
+
         # Eve stores init values in local storage
         add_received_values(alice_init_message_received_eve, eve_local_package)
 
@@ -697,6 +712,9 @@ def modified_public_dh_eve_demo():
 
         # Bob verifies message from Alice
         verify_received_message_package(alice_init_message_received, bob_local_package)
+
+        # Bob verifies p
+        received_modulus_validation(alice_init_message_received["p"])
 
         # Bob stores init values in local storage
         add_received_values(alice_init_message_received, bob_local_package)
@@ -822,6 +840,9 @@ def modified_prime_eve_demo():
         # Eve verifies message from Alice
         verify_received_message_package(alice_init_message_received_eve, eve_local_package)
 
+        # Bob verifies p
+        received_modulus_validation(alice_init_message_received_eve["p"])
+
         # Eve stores init values in local storage
         add_received_values(alice_init_message_received_eve, eve_local_package)
 
@@ -869,6 +890,9 @@ def modified_prime_eve_demo():
 
         # Bob verifies message from Alice
         verify_received_message_package(alice_init_message_received, bob_local_package)
+
+        # Bob verifies p
+        received_modulus_validation(alice_init_message_received["p"])
 
         # Bob stores init values in local storage
         add_received_values(alice_init_message_received, bob_local_package)
@@ -991,6 +1015,9 @@ def modified_identity_eve_demo():
         # Eve verifies message from Alice
         verify_received_message_package(alice_init_message_received_eve, eve_local_package)
 
+        # Bob verifies p
+        received_modulus_validation(alice_init_message_received_eve["p"])
+
         # Eve stores init values in local storage
         add_received_values(alice_init_message_received_eve, eve_local_package)
 
@@ -1029,6 +1056,9 @@ def modified_identity_eve_demo():
 
         # Bob verifies message from Alice
         verify_received_message_package(alice_init_message_received, bob_local_package)
+
+        # Bob verifies p
+        received_modulus_validation(alice_init_message_received["p"])
 
         # Bob stores init values in local storage
         add_received_values(alice_init_message_received, bob_local_package)
@@ -1161,6 +1191,9 @@ def signed_eve_demo():
         # Eve verifies message from Alice
         verify_received_message_package(alice_init_message_received_eve, eve_local_package_for_alice)
 
+        # Eve verifies p
+        received_modulus_validation(alice_init_message_received_eve["p"])
+
         # Eve stores init values in local storage
         add_received_values(alice_init_message_received_eve, eve_local_package_for_alice)
 
@@ -1237,6 +1270,9 @@ def signed_eve_demo():
 
         # Bob verifies message from Alice
         verify_received_message_package(alice_init_message_received, bob_local_package)
+
+        # Bob verifies p
+        received_modulus_validation(alice_init_message_received["p"])
 
         # Bob stores init values in local storage
         add_received_values(alice_init_message_received, bob_local_package)
@@ -1350,6 +1386,9 @@ def reused_response_eve_demo():
 
         # Bob verifies message from Alice
         verify_received_message_package(alice_init_message_received, bob_local_package)
+
+        # Bob verifies p
+        received_modulus_validation(alice_init_message_received["p"])
 
         # Bob stores init values in local storage
         add_received_values(alice_init_message_received, bob_local_package)
@@ -1662,6 +1701,9 @@ def reused_finish_eve_demo():
         # Bob verifies message from Alice
         verify_received_message_package(alice_init_message_received, bob_local_package)
 
+        # Bob verifies p
+        received_modulus_validation(alice_init_message_received["p"])
+
         # Bob stores init values in local storage
         add_received_values(alice_init_message_received, bob_local_package)
 
@@ -1868,6 +1910,9 @@ def reused_finish_eve_demo():
         # Bob verifies message from Alice
         verify_received_message_package(alice_init_message_received, bob_local_package)
 
+        # Bob verifies p
+        received_modulus_validation(alice_init_message_received["p"])
+
         # Bob stores init values in local storage
         add_received_values(alice_init_message_received, bob_local_package)
 
@@ -2050,6 +2095,9 @@ def duplicate_finish_eve_demo():
         # Bob verifies message from Alice
         verify_received_message_package(alice_init_message_received, bob_local_package)
 
+        # Bob verifies p
+        received_modulus_validation(alice_init_message_received["p"])
+
         # Bob stores init values in local storage
         add_received_values(alice_init_message_received, bob_local_package)
 
@@ -2214,36 +2262,34 @@ def duplicate_finish_eve_demo():
         print("Key Exchange Aborted.")
         
 def eve_demo_call():
-    call = input("Enter Demo Function to Run (See README.txt for Options): ")
+    call = input("Enter Eve Demo Function to Run (See README.txt for Options): ")
 
-    while call != "quit":
-        if call == "unauth":
-            unauth_eve_demo()
+    if call == "unauth":
+        unauth_eve_demo()
 
-        elif call == "auth":
-            auth_eve_demo()
+    elif call == "auth":
+        auth_eve_demo()
 
-        elif call == "A":
-            modified_public_dh_eve_demo()
+    elif call == "A":
+        modified_public_dh_eve_demo()
 
-        elif call == "prime":
-            modified_prime_eve_demo()
+    elif call == "prime":
+        modified_prime_eve_demo()
 
-        elif call == "id":
-            modified_identity_eve_demo()
+    elif call == "id":
+        modified_identity_eve_demo()
 
-        elif call == "signed":
-            signed_eve_demo()
+    elif call == "signed":
+        signed_eve_demo()
 
-        elif call == "response":
-            reused_response_eve_demo()
+    elif call == "response":
+        reused_response_eve_demo()
 
-        elif call == "refinish":
-            reused_finish_eve_demo()
+    elif call == "refinish":
+        reused_finish_eve_demo()
 
-        elif call == "dupfinish":
-            duplicate_finish_eve_demo()
+    elif call == "dupfinish":
+        duplicate_finish_eve_demo()
 
-        call = input("Enter Demo Function to Run (See README.txt for Options) (Type 'quit' to End): ")
-
-eve_demo_call()
+    else:
+        print("Invalid Input.")

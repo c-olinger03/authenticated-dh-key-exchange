@@ -131,7 +131,6 @@ def verify_received_message_package(message, local_storage, previous_transcript=
 
         # Verify values of init message
         if message["message_type"] == "init":
-            received_modulus_validation(message["p"])
             received_generator_validation(message["g"], message["p"])
             verify_range_peer_public_dh_key(message["A"], message["p"])
 

@@ -3,7 +3,7 @@ from parameters import *
 from authentication import *
 from protocol import *
 
-def main():
+def main_demo():
     try:
         # Public Constants Used for Arguments
         PROTOCOL = "DH-CLASSROOM-AUTH-v1"
@@ -82,6 +82,9 @@ def main():
 
         # Bob verifies message from Alice
         verify_received_message_package(alice_init_message_received, bob_local_package)
+
+        # Bob verifies prime
+        received_modulus_validation(alice_init_message_received["p"])
 
         # Bob stores init values in local storage
         add_received_values(alice_init_message_received, bob_local_package)
@@ -202,7 +205,3 @@ def main():
     except Exception as e:
         print(f"\te")
         print("Key Exchange Aborted.")
-
-if __name__ == "__main__":
-    main()
-
