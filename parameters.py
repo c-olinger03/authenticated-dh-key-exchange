@@ -52,7 +52,8 @@ def generate_prime(bits):
         return p
 
     # Reject Value, Abort Exchange
-    except TypeError, ValueError:
+    except (TypeError, ValueError) as e:
+        print(e)
         raise Exception("Aborted at Prime Generation.")
 
 # Verify valid prime modulus received
@@ -75,7 +76,8 @@ def received_modulus_validation(modulus):
             raise ValueError("Error: Modulus is not a prime number.")
 
     # Reject Value, Abort Exchange
-    except TypeError, ValueError:
+    except (TypeError, ValueError) as e:
+        print(e)
         raise Exception("Aborted at Modulus Validation.")
 
 
@@ -127,7 +129,8 @@ def prime_factors(n):
             return distinct_factors
 
     # Reject Value, Abort Exchange
-    except TypeError, ValueError:
+    except (TypeError, ValueError) as e:
+        print(e)
         raise Exception("Aborted at Prime Factorization.")
 
 @timer
@@ -172,7 +175,8 @@ def generator_selection(p, factors):
         return g
 
     # Reject Value, Abort Exchange
-    except TypeError, ValueError:
+    except (TypeError, ValueError) as e:
+        print(e)
         raise Exception("Aborted at Generator Selection.")
 
 # Verify generator value of prime
@@ -193,5 +197,6 @@ def received_generator_validation(provided_g, p):
         else:
             raise ValueError("Error: Generator is not valid.")
 
-    except TypeError, ValueError:
+    except (TypeError, ValueError) as e:
+        print(e)
         raise Exception("Aborted at Generator Validation.")

@@ -42,5 +42,6 @@ def modular_exponentiation(base, exponent, modulus):
         return result
 
     # Invalid argument, Abort Exchange
-    except (TypeError, ValueError):
+    except (TypeError, ValueError) as e:
+        print(e)
         raise Exception("Aborted at Modular Exponentiation.")

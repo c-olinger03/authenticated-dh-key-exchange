@@ -19,11 +19,17 @@ def main():
         alice_local_package["protocol"] = PROTOCOL
         alice_local_package["initiator"] = ALICE
         alice_local_package["responder"] = BOB
+        alice_local_package["init"] = "None"
+        alice_local_package["response"] = "None"
+        alice_local_package["finish"] = "None"
 
         # Bob adds public constant data
         bob_local_package["protocol"] = PROTOCOL
         bob_local_package["initiator"] = ALICE
         bob_local_package["responder"] = BOB
+        bob_local_package["init"] = "None"
+        bob_local_package["response"] = "None"
+        bob_local_package["finish"] = "None"
 
         print("Pre-Established data added to local storage packages.\n")
 
@@ -193,7 +199,8 @@ def main():
 
         print("Authenticated DH Key Exchange successfully completed.")
 
-    except Exception:
+    except Exception as e:
+        print(f"\te")
         print("Key Exchange Aborted.")
 
 if __name__ == "__main__":

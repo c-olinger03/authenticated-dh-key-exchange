@@ -45,5 +45,6 @@ def verify_range_peer_public_dh_key(public_dh_key, p):
         else:
             raise ValueError("\tError: Invalid Public DH Key.")
 
-    except ValueError:
+    except ValueError as e:
+        print(e)
         raise Exception("\tAborted at Peer Public DH Key Range Validation.")

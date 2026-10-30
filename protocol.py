@@ -58,7 +58,8 @@ def session_message(protocol=None, message_type=None, initiator=None, responder=
         return encoded_message
 
     # Reject Value, Abort Exchange
-    except ValueError:
+    except ValueError as e:
+        print(e)
         raise Exception("Aborted at Message Creation.")
 
 # Verifies length, format, type, and attributes of message received
@@ -82,17 +83,29 @@ def verify_received_message_package(message, local_storage, previous_transcript=
                         "p" not in message or "g" not in message or "A" not in message or "nonce_A" not in message:
                     raise ValueError("\tError: Missing argument for designated message type.")
 
+                if local_storage["init"] != "None":
+                    raise ValueError("\tError: Duplicate Message Type Received.")
+
+                else:
+                    local_storage["init"] = "received"
+
             elif message["message_type"] == "response" or message["message_type"] == "finish":
                 if "protocol" not in message or "initiator" not in message or "responder" not in message or \
                         "p" not in message or "g" not in message or "A" not in message or "nonce_A" not in message \
                         or "B" not in message or "nonce_B" not in message:
                     raise ValueError("\tError: Missing argument for designated message type.")
 
-            # elif message["message_type"] == "finish":
-            #     if "protocol" not in message or "initiator" not in message or "responder" not in message or \
-            #             "p" not in message or "g" not in message or "A" not in message or "nonce_A" not in message \
-            #             or "B" not in message or "nonce_B" not in message:
-            #         raise ValueError
+                if message["message_type"] == "response" and local_storage["response"] != "None":
+                    raise ValueError("\tError: Duplicate Message Type Received.")
+
+                else:
+                    local_storage["response"] = "received"
+
+                if message["message_type"] == "finish" and local_storage["finish"] != "None":
+                    raise ValueError("\tError: Duplicate Message Type Received.")
+
+                else:
+                    local_storage["finish"] = "received"
 
             print("\tMessage Format: Verified")
 
@@ -142,25 +155,32 @@ def verify_received_message_package(message, local_storage, previous_transcript=
         print("\tReceived Message: Verified\n")
 
     # Invalid Message received, Abort Exchange
-    except TypeError, ValueError:
+    except (TypeError, ValueError) as e:
+        print(e)
         raise Exception("\tAborted at Message Validation.")
 
 # Adds values from received message to local storage if not present
 def add_received_values(message, local_storage):
     print("\tAdding Received Values...")
 
-    # Adding init values to local storage
-    if message["message_type"] == "init":
-        local_storage["p"] = message["p"]
-        local_storage["g"] = message["g"]
-        local_storage["A"] = message["A"]
-        local_storage["nonce_A"] = message["nonce_A"]
+    try:
 
-    if message["message_type"] == "response":
-        local_storage["B"] = message["B"]
-        local_storage["nonce_B"] = message["nonce_B"]
+        # Adding init values to local storage
+        if message["message_type"] == "init":
+            local_storage["p"] = message["p"]
+            local_storage["g"] = message["g"]
+            local_storage["A"] = message["A"]
+            local_storage["nonce_A"] = message["nonce_A"]
 
-    print("\tReceived values added to local storage.\n")
+        elif message["message_type"] == "response":
+            local_storage["B"] = message["B"]
+            local_storage["nonce_B"] = message["nonce_B"]
+
+        print("\tReceived values added to local storage.\n")
+
+    except ValueError as e:
+        print(e)
+        raise Exception("\tAborted at Message Validation.")
 
 # Decode message from bytes to ASCII
 def decode_message(message_package):
@@ -180,7 +200,8 @@ def decode_message(message_package):
             print()
             return decoded_message
 
-    except TypeError:
+    except TypeError as e:
+        print(e)
         raise Exception("\tAborted at Message Decoding.")
 
 
