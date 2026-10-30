@@ -184,6 +184,13 @@ def main():
         print("OFF BOB LOCAL MACHINE\n")
         # OFF BOB LOCAL MACHINE
 
+        # Analysis to confirm matching of secret keys; not a part of the actual exchange; NOT OVER PUBLIC NETWORK
+        if alice_local_package["secret_shared_key"] != bob_local_package["secret_shared_key"]:
+            raise ValueError("Error: Shared secret mismatch.")
+
+        else:
+            print("Shared secret verified.\n")
+
         print("Authenticated DH Key Exchange successfully completed.")
 
     except Exception:
