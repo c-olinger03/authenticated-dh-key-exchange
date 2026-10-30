@@ -3,11 +3,11 @@ from parameters import *
 from authentication import *
 from protocol import *
 
-def main_demo():
+def main_demo(bit_size=16):
     try:
         # Public Constants Used for Arguments
         PROTOCOL = "DH-CLASSROOM-AUTH-v1"
-        DH_KEY_BIT_LEN = 16
+        DH_KEY_BIT_LEN = bit_size
         ALICE = "Alice"
         BOB = "Bob"
 

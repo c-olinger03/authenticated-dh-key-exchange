@@ -362,7 +362,8 @@ def select_test():
                     key_23()
 
                 elif test_specify == "exchange":
-                    main_demo()
+                    bits = int(input("Request Bit Size (16, 24, 32): "))
+                    main_demo(bits)
 
                 else:
                     print("Invalid Input")
