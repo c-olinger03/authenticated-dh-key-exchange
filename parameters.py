@@ -123,3 +123,12 @@ def generator_selection(p, factors):
                 return False
 
     return g
+
+def received_generator_validation(provided_g, p):
+    p_factors = prime_factors(p)
+    calculated_g = generator_selection(p, p_factors)
+    if calculated_g == provided_g:
+        return calculated_g
+
+    else:
+        return None
