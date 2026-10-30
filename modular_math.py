@@ -1,34 +1,46 @@
+# Performs modular exponentiation more efficiently than pow() by squaring repeatedly instead of multiplying
+#   which achieved end result faster
 def modular_exponentiation(base, exponent, modulus):
 
     try:
 
         if type(base) != int:
-            raise TypeError("Base must be an integer.")
+            raise TypeError("Error: Base must be an integer.")
 
-        elif type(exponent) != int:
-            raise TypeError("Exponent must be an integer.")
+        if type(exponent) != int:
+            raise TypeError("Error: Exponent must be an integer.")
 
-        elif type(modulus) != int:
-            raise TypeError("Modulus must be an integer.")
+        if type(modulus) != int:
+            raise TypeError("Error: Modulus must be an integer.")
 
-        elif exponent < 0:
-            raise ValueError("Exponent must be non-negative.")
+        if exponent < 0:
+            raise ValueError("Error: Exponent must be non-negative.")
 
-        elif modulus <= 0:
-            raise ValueError("Modulus must be positive.")
+        if modulus <= 0:
+            raise ValueError("Error: Modulus must be positive.")
 
-        else:
-            result = 1 % modulus
-            base = base % modulus
+        # Initialize result to 1
+        result = 1 % modulus
 
-            while exponent > 0:
-                if exponent % 2 == 1:
-                    result = (result * base) % modulus
-                base = (base * base) % modulus
-                exponent = exponent // 2
+        # Initialized base
+        base = base % modulus
 
-            return result
+        # Continues until exponent is fully decremented via floor div
+        while exponent > 0:
 
-    except (TypeError, ValueError) as e:
-        print(e)
-        return False
+            # Catch if squaring would result in excess value; sets final result; multiply by base then mod
+            if exponent % 2 == 1:
+                result = (result * base) % modulus
+
+            # Square base then mod
+            base = (base * base) % modulus
+
+            # Exponent halved
+            exponent = exponent // 2
+
+        # Return final
+        return result
+
+    # Invalid argument, Abort Exchange
+    except (TypeError, ValueError):
+        raise Exception("Aborted at Modular Exponentiation.")
