@@ -1,6 +1,6 @@
 from authentication import *
 from eve import *
-from main import *
+from main_demo import *
 from modular_math import *
 from parameters import *
 from participant import *
