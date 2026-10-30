@@ -45,5 +45,6 @@ def verify_signature(trusted_key, message_package):
         trusted_key.verify(message_package[1],message_package[0])
         print("\tSignature verified.\n")
 
-    except InvalidSignature:
-        raise Exception("Invalid Verification Signature.")
+    except Exception:
+        print("\tInvalid Verification Signature.\n")
+        raise Exception()
