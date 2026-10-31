@@ -1,0 +1,169 @@
+Authentication keys generated and packaged.
+
+Pre-Established data added to local storage packages.
+
+ON ALICE LOCAL MACHINE:
+	Generating Prime...
+	Bit Input: 32
+	Prime Generated: 3949418311
+	Time Taken: 0.001372 seconds
+
+	Factoring n...
+	Factor Set: {2, 3, 5, 71, 1854187}
+	Time Taken: 0.000079 seconds
+
+	Selecting Generator...
+	Generator Selected: 3
+	Time Taken: 0.000114 seconds
+
+	Generating DH Keys...
+	Private Key Generated: 2223931950
+	Public Key Generated: 1167724292
+
+	Generating Nonce Value...
+	Nonce Value: 9e80718d09865402f57ac058d24065167b864edeb5da0a11657af2ddbc26e99c
+
+	Generating Message...
+	Message Type: init
+	Message Length (bytes): 208
+	Message: b'{"A":1167724292,"g":3,"initiator":"Alice","message_type":"init","nonce_A":"9e80718d09865402f57ac058d24065167b864edeb5da0a11657af2ddbc26e99c","p":3949418311,"protocol":"DH-CLASSROOM-AUTH-v1","responder":"Bob"}'
+
+	Signing Message...
+	Message package generated and signed.
+
+	Alice init message package sent to public network.
+
+OFF ALICE LOCAL MACHINE
+
+ON BOB LOCAL MACHINE:
+	Alice init message package retrieved from public network.
+
+	Verifying Signature...
+	Signature verified.
+
+	Decoding Message...
+	Message Decoded: {'A': 1167724292, 'g': 3, 'initiator': 'Alice', 'message_type': 'init', 'nonce_A': '9e80718d09865402f57ac058d24065167b864edeb5da0a11657af2ddbc26e99c', 'p': 3949418311, 'protocol': 'DH-CLASSROOM-AUTH-v1', 'responder': 'Bob'}
+
+	Verifying Received Message...
+	Message Length: Verified
+	Message Type: init
+	Message Format: Verified
+	Protocol: Verified
+	Initiator: Verified
+	Responder: Verified
+	Generator Validation...
+	Factoring n...
+	Factor Set: {2, 3, 5, 71, 1854187}
+	Time Taken: 0.000082 seconds
+
+	Selecting Generator...
+	Generator Selected: 3
+	Time Taken: 0.000101 seconds
+
+	Generator: Validated
+	Verifying Range Peer Public DH Key...
+	Public DH Key: Verified
+	Received Message: Verified
+
+	Modulus Validation...
+	Modulus: Verified
+	Adding Received Values...
+	Received values added to local storage.
+
+	Generating DH Keys...
+	Private Key Generated: 3329217195
+	Public Key Generated: 3035327559
+
+	Generating Nonce Value...
+	Nonce Value: 73225f6c4f6094d050eba482d42ec5320a59e9c19f6190b3a12a78e94ee1c371
+
+	Generating Message...
+	Message Type: response
+	Message Length (bytes): 304
+	Message: b'{"A":1167724292,"B":3035327559,"g":3,"initiator":"Alice","message_type":"response","nonce_A":"9e80718d09865402f57ac058d24065167b864edeb5da0a11657af2ddbc26e99c","nonce_B":"73225f6c4f6094d050eba482d42ec5320a59e9c19f6190b3a12a78e94ee1c371","p":3949418311,"protocol":"DH-CLASSROOM-AUTH-v1","responder":"Bob"}'
+
+	Signing Message...
+	Message package generated and signed.
+
+	Bob response message package sent to public network.
+
+OFF BOB LOCAL MACHINE
+
+ON ALICE LOCAL MACHINE:
+
+	Bob response message package retrieved from public network.
+
+	Verifying Signature...
+	Signature verified.
+
+	Decoding Message...
+	Message Decoded: {'A': 1167724292, 'B': 3035327559, 'g': 3, 'initiator': 'Alice', 'message_type': 'response', 'nonce_A': '9e80718d09865402f57ac058d24065167b864edeb5da0a11657af2ddbc26e99c', 'nonce_B': '73225f6c4f6094d050eba482d42ec5320a59e9c19f6190b3a12a78e94ee1c371', 'p': 3949418311, 'protocol': 'DH-CLASSROOM-AUTH-v1', 'responder': 'Bob'}
+
+	Verifying Received Message...
+	Message Length: Verified
+	Message Type: response
+	Message Format: Verified
+	Protocol: Verified
+	Initiator: Verified
+	Responder: Verified
+	Verifying Range Peer Public DH Key...
+	Public DH Key: Verified
+	Received Message: Verified
+
+	Adding Received Values...
+	Received values added to local storage.
+
+	Generating Message...
+	Message Type: finish
+	Message Length (bytes): 302
+	Message: b'{"A":1167724292,"B":3035327559,"g":3,"initiator":"Alice","message_type":"finish","nonce_A":"9e80718d09865402f57ac058d24065167b864edeb5da0a11657af2ddbc26e99c","nonce_B":"73225f6c4f6094d050eba482d42ec5320a59e9c19f6190b3a12a78e94ee1c371","p":3949418311,"protocol":"DH-CLASSROOM-AUTH-v1","responder":"Bob"}'
+
+	Signing Message...
+	Message package generated and signed.
+
+	Alice final message package sent to public network.
+
+OFF ALICE LOCAL MACHINE
+
+ON BOB LOCAL MACHINE:
+
+	Alice final message package retrieved from public network.
+
+	Verifying Signature...
+	Signature verified.
+
+	Decoding Message...
+	Message Decoded: {'A': 1167724292, 'B': 3035327559, 'g': 3, 'initiator': 'Alice', 'message_type': 'finish', 'nonce_A': '9e80718d09865402f57ac058d24065167b864edeb5da0a11657af2ddbc26e99c', 'nonce_B': '73225f6c4f6094d050eba482d42ec5320a59e9c19f6190b3a12a78e94ee1c371', 'p': 3949418311, 'protocol': 'DH-CLASSROOM-AUTH-v1', 'responder': 'Bob'}
+
+	Bob response message retrieved from memory:
+	Decoding Message...
+	Message Decoded: {'A': 1167724292, 'B': 3035327559, 'g': 3, 'initiator': 'Alice', 'message_type': 'response', 'nonce_A': '9e80718d09865402f57ac058d24065167b864edeb5da0a11657af2ddbc26e99c', 'nonce_B': '73225f6c4f6094d050eba482d42ec5320a59e9c19f6190b3a12a78e94ee1c371', 'p': 3949418311, 'protocol': 'DH-CLASSROOM-AUTH-v1', 'responder': 'Bob'}
+
+	Verifying Received Message...
+	Message Length: Verified
+	Message Type: finish
+	Message Format: Verified
+	Protocol: Verified
+	Initiator: Verified
+	Responder: Verified
+	Received Message: Verified
+
+OFF BOB LOCAL MACHINE
+
+ON ALICE LOCAL MACHINE:
+
+	Getting Shared Secret Key ...
+	Shared Secret Key Generated: 2690317517
+
+OFF ALICE LOCAL MACHINE
+
+ON BOB LOCAL MACHINE:
+
+	Getting Shared Secret Key ...
+	Shared Secret Key Generated: 2690317517
+
+OFF BOB LOCAL MACHINE
+
+Shared secret verified.
+
+Authenticated DH Key Exchange successfully completed.

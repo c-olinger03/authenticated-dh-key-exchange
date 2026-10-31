@@ -1,0 +1,109 @@
+Authentication keys generated and packaged.
+
+Pre-Established data added to local storage packages.
+
+ON ALICE LOCAL MACHINE:
+	Generating Prime...
+	Bit Input: 16
+	Prime Generated: 38189
+	Time Taken: 0.000467 seconds
+
+	Factoring n...
+	Factor Set: {2, 9547}
+	Time Taken: 0.000037 seconds
+
+	Selecting Generator...
+	Generator Selected: 2
+	Time Taken: 0.000070 seconds
+
+	Generating DH Keys...
+	Private Key Generated: 13159
+	Public Key Generated: 12350
+
+	Generating Nonce Value...
+	Nonce Value: 75df458cd00fa13399dabd92f9e03f7097a91a9cf1c2de6f47459313e4aa5ab0
+
+	Generating Message...
+	Message Type: init
+	Message Length (bytes): 198
+	Message: b'{"A":12350,"g":2,"initiator":"Alice","message_type":"init","nonce_A":"75df458cd00fa13399dabd92f9e03f7097a91a9cf1c2de6f47459313e4aa5ab0","p":38189,"protocol":"DH-CLASSROOM-AUTH-v1","responder":"Bob"}'
+
+	Signing Message...
+	Message package generated and signed.
+
+	Alice init message package sent to public network.
+
+OFF ALICE LOCAL MACHINE
+
+ON EVE LOCAL MACHINE:
+	EVE FORGING RESPONSE FOR ALICE:
+
+	Alice init message package retrieved from public network.
+
+	Decoding Message...
+	Message Decoded: {'A': 12350, 'g': 2, 'initiator': 'Alice', 'message_type': 'init', 'nonce_A': '75df458cd00fa13399dabd92f9e03f7097a91a9cf1c2de6f47459313e4aa5ab0', 'p': 38189, 'protocol': 'DH-CLASSROOM-AUTH-v1', 'responder': 'Bob'}
+
+	Verifying Received Message...
+	Message Length: Verified
+	Message Type: init
+	Message Format: Verified
+	Protocol: Verified
+	Initiator: Verified
+	Responder: Verified
+	Generator Validation...
+	Factoring n...
+	Factor Set: {2, 9547}
+	Time Taken: 0.000028 seconds
+
+	Selecting Generator...
+	Generator Selected: 2
+	Time Taken: 0.000024 seconds
+
+	Generator: Validated
+	Verifying Range Peer Public DH Key...
+	Public DH Key: Verified
+	Received Message: Verified
+
+	Modulus Validation...
+	Modulus: Verified
+	Adding Received Values...
+	Received values added to local storage.
+
+	Generating DH Keys...
+	Private Key Generated: 8212
+	Public Key Generated: 33114
+
+	Generating Nonce Value...
+	Nonce Value: 327e31b1bec977c6edf5a65c67bcf9ff63b3af2dcab53058d1c40789c93a634d
+
+	Generating Message...
+	Message Type: response
+	Message Length (bytes): 289
+	Message: b'{"A":12350,"B":33114,"g":2,"initiator":"Alice","message_type":"response","nonce_A":"75df458cd00fa13399dabd92f9e03f7097a91a9cf1c2de6f47459313e4aa5ab0","nonce_B":"327e31b1bec977c6edf5a65c67bcf9ff63b3af2dcab53058d1c40789c93a634d","p":38189,"protocol":"DH-CLASSROOM-AUTH-v1","responder":"Bob"}'
+
+	Eve response message package sent to public network.
+
+	FORGING INIT MESSAGE FOR BOB:
+	Generating DH Keys...
+	Private Key Generated: 26885
+	Public Key Generated: 33710
+
+	Generating Nonce Value...
+	Nonce Value: 2fc67dff475640c0b2a961e068559aae59858410cd339663f45afc3f88b6fea0
+
+	Generating Message...
+	Message Type: init
+	Message Length (bytes): 198
+	Message: b'{"A":33710,"g":2,"initiator":"Alice","message_type":"init","nonce_A":"2fc67dff475640c0b2a961e068559aae59858410cd339663f45afc3f88b6fea0","p":38189,"protocol":"DH-CLASSROOM-AUTH-v1","responder":"Bob"}'
+
+	Alice init message package sent to public network.
+
+OFF EVE LOCAL MACHINE
+
+ON BOB LOCAL MACHINE:
+	Alice init message package retrieved from public network.
+
+	Verifying Signature...
+	Invalid Verification Signature.
+
+Key Exchange Aborted.
